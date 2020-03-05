@@ -1,2 +1,2 @@
 main: main.c
-    gcc -Wall -o main nain.c
+    gcc -Wall -o main nain.c -lm
