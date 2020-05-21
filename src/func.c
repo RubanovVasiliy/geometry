@@ -24,13 +24,17 @@ Circle createCircle()
     } else if (code != 4) {
         printf("Error: invalid input format\n");
     } else {
-        double p = 2 * M_PI * c.r;
-        double s = c.r * c.r * M_PI;
-        printf("circle(%d %d, %.4f) \n", c.p.x, c.p.y, c.r);
-        printf("perimeter = %.4f\n", p);
-        printf("area = %.4f\n", s);
+        c.perimeter = 2 * M_PI * c.r;
+        c.square = c.r * c.r * M_PI;
     }
     return c;
+}
+
+void print_circle(Circle c)
+{
+    printf("circle(%d %d, %.4f) \n", c.p.x, c.p.y, c.r);
+    printf("perimeter = %.4f\n", c.perimeter);
+    printf("square = %.4f\n", c.square);
 }
 
 Triangle createTriangle()

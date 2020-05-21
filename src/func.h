@@ -8,6 +8,8 @@ typedef struct Point {
 typedef struct Circle {
     Point p;
     float r;
+    float square;
+    float perimeter;
 } Circle;
 
 typedef struct Triangle {
@@ -19,4 +21,5 @@ typedef struct Triangle {
 
 void inputElements(char* str);
 Circle createCircle();
+void print_circle(Circle c);
 Triangle createTriangle();

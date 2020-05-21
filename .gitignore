@@ -1,7 +1,9 @@
 *
+!src
 !README.md
 !.gitignore
 !.clang-format
+!.travis.yml
 !*.c
 !*.h
 !Makefile
