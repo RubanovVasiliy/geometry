@@ -1,5 +1,7 @@
 *
 !src
+!thirdparty
+!test
 !README.md
 !.gitignore
 !.clang-format
