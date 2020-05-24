@@ -3,22 +3,14 @@
 #include <stdio.h>
 #include <string.h>
 
-void inputElements(char* str)
-{ // Input set with keyboard
-    int c;
-    while ((c = getchar()) != '\n') {
-        *str++ = c;
-    };
-    *str = '\0';
-}
 
 Circle createCircle()
 {
     Circle c = {};
     char str[20];
     char s[70] = "circle";
-    int code = scanf("%6s(%d %d, %f)", str, &c.p.x, &c.p.y, &c.r);
-    printf("%s \n%d circle(%d %d, %.4f) \n", str, code, c.p.x, c.p.y, c.r);
+    int code = scanf("%6s(%lf %lf, %lf)", str, &c.p.x, &c.p.y, &c.r);
+    printf("%s \n%d circle(%lf %lf, %.4lf) \n", str, code, c.p.x, c.p.y, c.r);
     if (strcmp(s, str)) {
         printf("Error: unknown shape '%s' \n", str);
     } else if (code != 4) {
@@ -32,24 +24,21 @@ Circle createCircle()
 
 void print_circle(Circle c)
 {
-    printf("circle(%d %d, %.4f) \n", c.p.x, c.p.y, c.r);
-    printf("perimeter = %.4f\n", c.perimeter);
-    printf("square = %.4f\n", c.square);
+    printf("circle(%lf %lf, %.4lf) \n", c.p.x, c.p.y, c.r);
+    printf("perimeter = %.4lf\n", c.perimeter);
+    printf("square = %.4lf\n", c.square);
 }
 
-Triangle createTriangle()
+int intersec_cir_cir(Circle* c1, Circle* c2)
 {
-    Triangle t = {};
-    char str[20];
-    char s[90] = "triangle";
-    int code = scanf("%8s((%d %d, %d %d, %d %d, %d %d))", str, &t.p1.x, &t.p1.y,
-        &t.p2.x, &t.p2.y, &t.p3.x, &t.p3.y, &t.p4.x, &t.p4.y);
-    printf("%d triangle((%d %d, %d %d, %d %d, %d %d))\n", code, t.p1.x, t.p1.y,
-        t.p2.x, t.p2.y, t.p3.x, t.p3.y, t.p4.x, t.p4.y);
-    if (strcmp(s, str)) {
-        printf("Error: unknown shape '%s' ", str);
-    } else if (code != 9) {
-        printf("Error: invalid input format");
+    if (!c1 || !c2)
+        return -1;
+
+    if (sqrt(pow(c2->p.x - c1->p.x, 2) + pow(c2->p.y - c1->p.y, 2)) <= (c2->r + c1->r)) {
+        return 1;
+    } else {
+        return 0;
     }
-    return t;
+
+    return -1;
 }
