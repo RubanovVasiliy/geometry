@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <string.h>
 
-
 Circle createCircle()
 {
     Circle c = {};
@@ -41,4 +40,11 @@ int intersec_cir_cir(Circle* c1, Circle* c2)
     }
 
     return -1;
+}
+
+double perimeter_cir(Circle* c)
+{
+    if (!c)
+        return -1;
+    return 2 * M_PI * c->r;
 }
