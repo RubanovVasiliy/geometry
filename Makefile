@@ -1,7 +1,9 @@
 FLAGS = -Wall -Werror
 
 
-all: bin build bin/g bin/t
+all: bin build bin/g 
+
+testing: bin build bin/g bin/t
 
 #src
 
