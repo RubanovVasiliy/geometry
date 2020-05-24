@@ -1,14 +1,18 @@
 #include "func.h"
-#include <math.h>
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
 int main(void)
 {
-    printf("\n");
-    //Circle circle = createCircle();
-    //print_circle(circle);
-    // Triangle triangle = createTriangle();
+    char* input1 = "circle(0 0,1)";
+    Circle* c1 = create_cir(input1);
+    print_cir(c1);
+
+    char* input2 = "circle(0 5,4)";
+    Circle* c2 = create_cir(input2);
+    print_cir(c2);
+
+    printf("Intersection: %d\n", intersec_cir_cir(c1, c2));
 
     return 0;
 }
