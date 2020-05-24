@@ -15,8 +15,8 @@ Circle createCircle()
     } else if (code != 4) {
         printf("Error: invalid input format\n");
     } else {
-        c.perimeter = 2 * M_PI * c.r;
-        c.square = c.r * c.r * M_PI;
+        c.perimeter = perimeter_cir(c.r);
+        c.square = square_cir(c.r);
     }
     return c;
 }
@@ -42,17 +42,12 @@ int intersec_cir_cir(Circle* c1, Circle* c2)
     return -1;
 }
 
-double perimeter_cir(Circle* c)
+double perimeter_cir(double r)
 {
-    if (!c)
-        return -1;
-    return 2 * M_PI * c->r;
+    return 2 * M_PI * r;
 }
 
-double square_cir(Circle* c)
+double square_cir(double r)
 {
-    if (!c) {
-        return -1;
-    }
-    return c->r * c->r * M_PI;
+    return r * r * M_PI;
 }

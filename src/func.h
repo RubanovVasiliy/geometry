@@ -1,25 +1,21 @@
 #include <stdio.h>
 
 typedef struct Point {
-    int x;
-    int y;
+    double x;
+    double y;
 } Point;
 
 typedef struct Circle {
     Point p;
-    float r;
-    float square;
-    float perimeter;
+    double r;
+    double square;
+    double perimeter;
 } Circle;
 
-typedef struct Triangle {
-    Point p1;
-    Point p2;
-    Point p3;
-    Point p4;
-} Triangle;
 
 void inputElements(char* str);
 Circle createCircle();
 void print_circle(Circle c);
-Triangle createTriangle();
+int intersec_cir_cir(Circle* c1, Circle* c2);
+double perimeter_cir(double r);
+double square_cir(double r);
