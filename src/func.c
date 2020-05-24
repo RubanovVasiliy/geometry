@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-Circle createCircle()
+Circle create_cir()
 {
     Circle c = {};
     char str[20];
@@ -21,7 +21,7 @@ Circle createCircle()
     return c;
 }
 
-void print_circle(Circle c)
+void print_cir(Circle c)
 {
     printf("circle(%lf %lf, %.4lf) \n", c.p.x, c.p.y, c.r);
     printf("perimeter = %.4lf\n", c.perimeter);
