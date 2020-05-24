@@ -1,31 +1,38 @@
 #include "func.h"
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-Circle create_cir()
+Circle* create_cir(char* input)
 {
-    Circle c = {};
+    Circle* c = calloc(sizeof(Circle), 1);
     char str[20];
-    char s[70] = "circle";
-    int code = scanf("%6s(%lf %lf, %lf)", str, &c.p.x, &c.p.y, &c.r);
-    printf("%s \n%d circle(%lf %lf, %.4lf) \n", str, code, c.p.x, c.p.y, c.r);
+    char s[10] = "circle";
+    int code = sscanf(input,"%6s(%lf %lf, %lf)", str, &c->p.x, &c->p.y, &c->r);
     if (strcmp(s, str)) {
-        printf("Error: unknown shape '%s' \n", str);
-    } else if (code != 4) {
-        printf("Error: invalid input format\n");
+        //printf("Error: unknown shape '%s' \n", str);
+        return NULL;
+    } else if (code != 4 || c->r < 0) {
+        //printf("Error: invalid input format\n");
+        return NULL;
     } else {
-        c.perimeter = perimeter_cir(c.r);
-        c.square = square_cir(c.r);
+        c->perimeter = perimeter_cir(c->r);
+        c->square = square_cir(c->r);
     }
+    //printf("%s \n%d circle(%lf %lf, %.4lf) \n", str, code, c->p.x, c->p.y, c->r);
     return c;
 }
 
-void print_cir(Circle c)
+void print_cir(Circle* c)
 {
-    printf("circle(%lf %lf, %.4lf) \n", c.p.x, c.p.y, c.r);
-    printf("perimeter = %.4lf\n", c.perimeter);
-    printf("square = %.4lf\n", c.square);
+    if (!c)
+        return;
+
+    printf("\n");
+    printf("circle(%lf %lf, %.4lf) \n", c->p.x, c->p.y, c->r);
+    printf("perimeter = %.4lf\n", c->perimeter);
+    printf("square = %.4lf\n", c->square);
 }
 
 int intersec_cir_cir(Circle* c1, Circle* c2)
@@ -44,10 +51,16 @@ int intersec_cir_cir(Circle* c1, Circle* c2)
 
 double perimeter_cir(double r)
 {
+    if (r < 0) {
+        return -1;
+    }
     return 2 * M_PI * r;
 }
 
 double square_cir(double r)
 {
+    if (r < 0) {
+        return -1;
+    }
     return r * r * M_PI;
 }
