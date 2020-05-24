@@ -9,7 +9,7 @@ Circle* create_cir(char* input)
     Circle* c = calloc(sizeof(Circle), 1);
     char str[20];
     char s[10] = "circle";
-    int code = sscanf(input,"%6s(%lf %lf, %lf)", str, &c->p.x, &c->p.y, &c->r);
+    int code = sscanf(input, "%6s(%lf %lf, %lf)", str, &c->p.x, &c->p.y, &c->r);
     if (strcmp(s, str)) {
         //printf("Error: unknown shape '%s' \n", str);
         return NULL;
@@ -24,15 +24,16 @@ Circle* create_cir(char* input)
     return c;
 }
 
-void print_cir(Circle* c)
+int print_cir(Circle* c)
 {
     if (!c)
-        return;
+        return -1;
 
     printf("\n");
     printf("circle(%lf %lf, %.4lf) \n", c->p.x, c->p.y, c->r);
     printf("perimeter = %.4lf\n", c->perimeter);
     printf("square = %.4lf\n", c->square);
+    return 0;
 }
 
 int intersec_cir_cir(Circle* c1, Circle* c2)

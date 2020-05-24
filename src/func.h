@@ -12,9 +12,8 @@ typedef struct Circle {
     double perimeter;
 } Circle;
 
-
 Circle* create_cir(char* input);
-void print_cir(Circle* c);
+int print_cir(Circle* c);
 int intersec_cir_cir(Circle* c1, Circle* c2);
 double perimeter_cir(double r);
 double square_cir(double r);
