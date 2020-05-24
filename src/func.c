@@ -48,3 +48,11 @@ double perimeter_cir(Circle* c)
         return -1;
     return 2 * M_PI * c->r;
 }
+
+double square_cir(Circle* c)
+{
+    if (!c) {
+        return -1;
+    }
+    return c->r * c->r * M_PI;
+}
