@@ -41,7 +41,19 @@ int intersec_cir_cir(Circle* c1, Circle* c2)
     if (!c1 || !c2)
         return -1;
 
-    if (sqrt(pow(c2->p.x - c1->p.x, 2) + pow(c2->p.y - c1->p.y, 2)) <= (c2->r + c1->r)) {
+    double delta = sqrt(pow(c2->p.x - c1->p.x, 2) + pow(c2->p.y - c1->p.y, 2));
+    if (delta <= (c2->r + c1->r)) {
+        if ((delta < c2->r || delta < c1->r)) {
+            if (c2->r > c1->r) {
+                if (c2->r > (c1->r + delta)) {
+                    return 0;
+                }
+            } else {
+                if (c1->r > (c2->r + delta)) {
+                    return 0;
+                }
+            }
+        }
         return 1;
     } else {
         return 0;
