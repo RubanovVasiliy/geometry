@@ -11,16 +11,17 @@ Circle* create_cir(char* input)
     char s[10] = "circle";
     int code = sscanf(input, "%6s(%lf %lf, %lf)", str, &c->p.x, &c->p.y, &c->r);
     if (strcmp(s, str)) {
-        //printf("Error: unknown shape '%s' \n", str);
+        // printf("Error: unknown shape '%s' \n", str);
         return NULL;
     } else if (code != 4 || c->r < 0) {
-        //printf("Error: invalid input format\n");
+        // printf("Error: invalid input format\n");
         return NULL;
     } else {
         c->perimeter = perimeter_cir(c->r);
         c->square = square_cir(c->r);
     }
-    //printf("%s \n%d circle(%lf %lf, %.4lf) \n", str, code, c->p.x, c->p.y, c->r);
+    // printf("%s \n%d circle(%lf %lf, %.4lf) \n", str, code, c->p.x, c->p.y,
+    // c->r);
     return c;
 }
 
