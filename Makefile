@@ -33,7 +33,11 @@ build:
 	mkdir -p build/test
 	mkdir -p build/src
 
-.PHONY: clean
+run: all
+	./bin/g
+	./bin/t
+
+.PHONY: clean all run
 
 clean:
 	rm -rf build bin
