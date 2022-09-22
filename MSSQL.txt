@@ -1,0 +1,99 @@
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY IDENTITY (1, 1),
+    product_name VARCHAR (50) NOT NULL,
+);
+
+
+CREATE TABLE categories (
+    categorie_id INT PRIMARY KEY IDENTITY (1, 1),
+    categorie_name VARCHAR (50) NOT NULL,
+);
+
+
+CREATE TABLE products_categories (
+    product_id INT NOT NULL,
+    categorie_id INT NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES products (product_id),
+    FOREIGN KEY (categorie_id) REFERENCES categories (categorie_id)
+);
+
+
+INSERT INTO categories (
+    categorie_name
+)
+VALUES
+    (
+        'fruits'
+    ),
+    (
+      	'red'
+    ),
+    (
+      	'vegetables'
+    );
+
+
+INSERT INTO products (
+    product_name
+)
+VALUES
+    (
+        'apple'
+    ),
+    (
+        'cerry'
+    ),
+    (
+        'tomato'
+    ),
+    (
+        'cheese'
+    ),
+    (
+        'grapes'
+    ),
+    (
+        'potato'
+    );
+
+
+INSERT INTO products_categories (
+    product_id,
+    categorie_id
+)
+VALUES
+    (
+        1,
+      	2
+    ),
+    (
+        2,
+      	2
+    ),
+    (
+        2,
+      	3
+    ),
+    (
+        3,
+      	1
+    ),
+    (
+        5,
+      	2
+    ),
+    (
+        6,
+      	1
+    );
+
+
+SELECT
+    product_name,
+    categorie_name
+FROM
+    products p
+LEFT JOIN products_categories pc ON pc.product_id = p.product_id
+LEFT JOIN categories c ON c.categorie_id = pc.categorie_id
+
